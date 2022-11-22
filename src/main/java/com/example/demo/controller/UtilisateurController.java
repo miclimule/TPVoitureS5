@@ -71,6 +71,8 @@ public class UtilisateurController {
 		return signUtilisateur == null ? "error_page" : "redirect:/login";
 	}
 	
+	
+	
 	@GetMapping("/getAllUser")
 	public List<Utilisateur> getAllUser(){
 		return this.utitlisateurRepository.findAll();
