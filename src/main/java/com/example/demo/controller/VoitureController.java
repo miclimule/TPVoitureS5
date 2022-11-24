@@ -26,8 +26,8 @@ public class VoitureController {
 	private VoitureRepository voitureRepository;
 	
 	
-	@GetMapping("/getAllUser")
-	public List<Voiture> getAllUser(){
+	@GetMapping("/getAllCar")
+	public List<Voiture> getAllUCar(){
 		return this.voitureRepository.findAll();
 	}
 	
@@ -38,13 +38,13 @@ public class VoitureController {
 		return ResponseEntity.ok().body(car);
 	}
 	
-	@PostMapping("createUtilisateur")
-	public Voiture createUtilisateur(@RequestBody Voiture utilisateur) {
+	@PostMapping("createCar")
+	public Voiture createCar(@RequestBody Voiture utilisateur) {
 		return this.voitureRepository.save(utilisateur);
 	}
 	
-	@PutMapping("updateUser/{id}")
-	public ResponseEntity<Voiture> updateUtilisateur(@PathVariable(name = "id")long id , @RequestBody Voiture carDetail) throws RessourceNotFoundException{
+	@PutMapping("updateCar/{id}")
+	public ResponseEntity<Voiture> updateCar(@PathVariable(name = "id")long id , @RequestBody Voiture carDetail) throws RessourceNotFoundException{
 		Voiture car = voitureRepository.findById(id).orElseThrow( () -> new RessourceNotFoundException("Voiture "+ id + " pas trouver"));
 		
 		car.setMarque(carDetail.getMarque());
@@ -53,8 +53,8 @@ public class VoitureController {
 		return ResponseEntity.ok(this.voitureRepository.save(car));
 	}
 	
-	@DeleteMapping("delete/{id}")
-	public Map<String,Boolean> deleteUtilisateur(@PathVariable(name = "id")long id ) throws RessourceNotFoundException{
+	@DeleteMapping("deleteCar/{id}")
+	public Map<String,Boolean> deleteCar(@PathVariable(name = "id")long id ) throws RessourceNotFoundException{
 		Voiture car = voitureRepository.findById(id).orElseThrow( () -> new RessourceNotFoundException("Voiture "+ id + " pas trouver"));
 		this.voitureRepository.delete(car);
 		

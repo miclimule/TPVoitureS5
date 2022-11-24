@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.security.Principal;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +38,12 @@ public class UtilisateurController {
 	
 	public UtilisateurController(UtilisateurService utilisateurService) {
 		this.utilisateurService = utilisateurService;
+	}
+	
+	@GetMapping
+	public String home(Principal principal , Model model) {
+		model.addAttribute("perso" , principal.getName());
+		return "accueil";
 	}
 
 	@GetMapping("/sign")
