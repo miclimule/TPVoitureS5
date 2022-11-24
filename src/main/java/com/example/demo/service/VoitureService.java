@@ -1,7 +1,10 @@
 package com.example.demo.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import com.example.demo.model.Voiture;
 import com.example.demo.repository.VoitureRepository;
 
 @Service
@@ -14,6 +17,8 @@ public class VoitureService {
 		this.voitureRepository = voitureRepository;
 	}
 	
-	
+	public List<Voiture> listVoiture(){
+		return this.voitureRepository.findAll();
+	}
 	
 }

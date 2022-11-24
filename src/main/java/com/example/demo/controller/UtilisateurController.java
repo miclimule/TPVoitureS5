@@ -21,8 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.exception.RessourceNotFoundException;
 import com.example.demo.model.Utilisateur;
+import com.example.demo.model.Voiture;
 import com.example.demo.repository.UtitlisateurRepository;
+import com.example.demo.repository.VoitureRepository;
 import com.example.demo.service.UtilisateurService;
+import com.example.demo.service.VoitureService;
 
 import net.bytebuddy.asm.Advice.Return;
 
@@ -31,13 +34,15 @@ public class UtilisateurController {
 
 	@Autowired
 	private UtitlisateurRepository utitlisateurRepository;
-	
+	private VoitureRepository voitureRepository;
 	
 	@Autowired
 	private final UtilisateurService utilisateurService;
+	private final VoitureService voitureService;
 	
-	public UtilisateurController(UtilisateurService utilisateurService) {
+	public UtilisateurController(UtilisateurService utilisateurService , VoitureService voitureService) {
 		this.utilisateurService = utilisateurService;
+		this.voitureService = voitureService;
 	}
 	
 	@GetMapping
@@ -64,6 +69,10 @@ public class UtilisateurController {
 		Utilisateur loginUtilisateur = utilisateurService.login(utilisateur.getNom(), utilisateur.getMpd());
 		if (loginUtilisateur != null) {
 			model.addAttribute("utilisateurLogin",loginUtilisateur.getNom());
+			System.out.println("1");
+			List<Voiture> lV = voitureService.listVoiture();
+			model.addAttribute("ListeVoiture", lV);
+			System.out.println("2");
 			return "personal_page";
 		}
 		else {

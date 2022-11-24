@@ -19,10 +19,8 @@ public class Voiture {
 	private String matricule;
 	
 	@Column(name = "marque")
-	private String marque;
+	private String marque; 
 	
-	
-
 	public Voiture() {
 	}
 
