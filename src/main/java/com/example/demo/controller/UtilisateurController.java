@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -45,13 +46,17 @@ public class UtilisateurController {
 		this.voitureService = voitureService;
 	}
 	
+	public void d() {
+		
+	}
+	
 	@GetMapping
 	public String home(Principal principal , Model model) {
 		model.addAttribute("perso" , principal.getName());
 		return "accueil";
 	}
-
-	@GetMapping("/sign")
+//	@GetMapping(value = "/sign" , produces = "application/json")
+	@GetMapping(value = "/sign")
 	public String getSignPage(Model model) {
 		model.addAttribute("signRequest",new Utilisateur());
 		return "sign_page.html";
