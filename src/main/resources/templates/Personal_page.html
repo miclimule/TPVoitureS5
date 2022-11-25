@@ -13,9 +13,9 @@
 			<th>matricule</th>
 		</tr>
 		<tr th:each = "voiture : ${ListeVoiture}">
-			<td th:utext = "${voiture.id}"></td>
-			<td th:utext = "${voiture.marque}"></td>
-			<td th:utext = "${voiture.matricule}"></td>
+			<td><a href="Caracteristique/1"><span th:utext = "${voiture.id}"></span></a></td>
+			<td><a href="Caracteristique/1"><span th:utext = "${voiture.marque}"></span></a></td>
+			<td><a href="Caracteristique/1"><span th:utext = "${voiture.matricule}"></span></a></td>
 		</tr>
 	</table>
 </body>
