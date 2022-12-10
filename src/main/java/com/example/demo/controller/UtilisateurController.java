@@ -94,7 +94,7 @@ public class UtilisateurController {
 	
 	
 	
-	@GetMapping("/getAllUser")
+	@GetMapping(value = "/getAllUser" , produces = "application/json")
 	public List<Utilisateur> getAllUser(){
 		return this.utitlisateurRepository.findAll();
 	}
